@@ -19,6 +19,8 @@ import com.wirecard.assignment.response.ResponseCommon;
 import com.wirecard.assignment.response.ResponseError;
 import com.wirecard.assignment.response.ResponseUser;
 
+import liquibase.util.StringUtils;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -65,6 +67,15 @@ public class UserServiceImpl implements UserService {
 					CommonMessage.ID_DOES_NOT_EXIST.getResponseDescription(), errors);
 			return new ResponseEntity<>(resp, new HttpHeaders(), HttpStatus.BAD_REQUEST);
 		} else {
+			if(StringUtils.isEmpty(user.getName())) {
+				user.setName(existingUser.getName());
+			}
+			if(user.getDate() == null) {
+				user.setDate(existingUser.getDate());
+			}
+			if(user.getType().getId() == null) {
+				user.setType(existingUser.getType());
+			}
 			userRepo.save(user);
 			ResponseCommon resp = new ResponseCommon(HttpStatus.OK, CommonMessage.RECORD_UPDATED.getResponseCode(),
 					CommonMessage.RECORD_UPDATED.getResponseDescription());

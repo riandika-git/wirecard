@@ -11,17 +11,16 @@ public class UserDto {
 	@ApiModelProperty(value = "id")
 	private Long id;
 
-	@ApiModelProperty(value = "name")
+	@ApiModelProperty(value = "name", example="Leonardo")
 	@NotBlank
 	@Length(min = 2, max = 100)
 	private String name;
 
-	@ApiModelProperty(value = "date")
-	@NotBlank
+	@ApiModelProperty(value = "date", example="2020-02-25 14:10:15")
 	@Length(min = 10, max = 19)
 	private String date;
 
-	@ApiModelProperty(value = "type")
+	@ApiModelProperty(value = "type", example="1")
 	private Long type;
 
 	public UserDto(Long id, String name, String date, Long type) {

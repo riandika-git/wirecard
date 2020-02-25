@@ -7,6 +7,7 @@ import com.wirecard.assignment.dto.UserDto;
 import com.wirecard.assignment.model.User;
 import com.wirecard.assignment.model.UserType;
 
+import liquibase.util.StringUtils;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
@@ -21,7 +22,7 @@ public class UserMapper {
 		mapperFactory.classMap(UserDto.class, User.class).field("id", "id").field("name", "name").register();
 		MapperFacade mapper = mapperFactory.getMapperFacade();
 		User user = mapper.map(userDto, User.class);
-		user.setDate(convertToDate(userDto.getDate()));
+		user.setDate(StringUtils.isNotEmpty(userDto.getDate()) ? convertToDate(userDto.getDate()) : null);
 		user.setType(new UserType(userDto.getType()));
 
 		return user;

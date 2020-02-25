@@ -71,7 +71,7 @@ public class UserTypeControllerItest {
 
 	/*
 	 * Test: update user type record for id 5 
-	 * Expected: status OK, responseCode 0103, responseDescription "New record has been updated"
+	 * Expected: status OK, responseCode 0103, responseDescription "Record has been updated"
 	 * 
 	 */
 	@Test
@@ -87,7 +87,7 @@ public class UserTypeControllerItest {
 	
 	/*
 	 * Test: delete user type record for id 8 
-	 * Expected: status OK, responseCode 0104, responseDescription "New record has been deleted"
+	 * Expected: status OK, responseCode 0104, responseDescription "Record has been deleted"
 	 * 
 	 */
 	@Test

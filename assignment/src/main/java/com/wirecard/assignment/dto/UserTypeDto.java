@@ -11,7 +11,7 @@ public class UserTypeDto {
 	@ApiModelProperty(value = "id")
 	private Long id;
 
-	@ApiModelProperty(value = "name")
+	@ApiModelProperty(value = "name", example="superadmin")
 	@NotBlank
 	@Length(min = 2, max = 100)
 	private String name;

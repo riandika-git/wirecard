@@ -64,7 +64,7 @@ public class UserControllerItest {
 	@Test
 	public void testAddUser() throws Exception {
 		mockMvc.perform(post("/user/add")
-				.content(JsonUtil.serialize(new UserDto(null, "Angel",
+				.content(JsonUtil.serialize(new UserDto(null, "Angela",
 						new SimpleDateFormat("yyy-MM-dd HH:mm:ss").format(new Date()), Long.valueOf("2"))))
 				.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
@@ -75,7 +75,7 @@ public class UserControllerItest {
 
 	/*
 	 * Test: update user record for id 5 
-	 * Expected: status OK, responseCode 0103, responseDescription "New record has been updated"
+	 * Expected: status OK, responseCode 0103, responseDescription "Record has been updated"
 	 * 
 	 */
 	@Test
@@ -91,13 +91,13 @@ public class UserControllerItest {
 	}
 
 	/*
-	 * Test: delete user record for id 7 
-	 * Expected: status OK, responseCode 0104, responseDescription "New record has been deleted"
+	 * Test: delete user record for id 8 
+	 * Expected: status OK, responseCode 0104, responseDescription "Record has been deleted"
 	 * 
 	 */
 	@Test
 	public void testDeleteUser() throws Exception {
-		mockMvc.perform(delete("/user/delete/3")).andExpect(status().isOk())
+		mockMvc.perform(delete("/user/delete/8")).andExpect(status().isOk())
 				.andExpect(jsonPath("responseCode").value(CommonMessage.RECORD_DELETED.getResponseCode()))
 				.andExpect(jsonPath("responseDescription").value(CommonMessage.RECORD_DELETED.getResponseDescription()));
 
